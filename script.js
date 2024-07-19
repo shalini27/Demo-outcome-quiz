@@ -1,3 +1,11 @@
+function nextPage(pageNumber) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.style.display = 'none';
+    });
+    document.getElementById(`page${pageNumber}`).style.display = 'block';
+}
+
 function calculateResults() {
     const form = document.getElementById('quizForm');
     let score = 0;
@@ -22,7 +30,8 @@ function calculateResults() {
         resultText = 'You are a seasoned member of the RDA community!';
     }
 
+    nextPage('result');
     const resultDiv = document.getElementById('result');
     resultDiv.innerText = resultText;
-    resultDiv.style.display = 'block';
 }
+
