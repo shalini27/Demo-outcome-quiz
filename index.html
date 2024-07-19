@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,35 +14,91 @@
             <p>Take this quick quiz to find out which RDA Persona you are. Click "Start" to begin!</p>
             <button onclick="nextPage(2)">Start</button>
         </div>
-        <div id="page2" class="page">
-            <h3>1. How long have you been part of the RDA community?</h3>
-            <label class="option"><input type="radio" name="q1" value="1"> Just joined</label>
-            <label class="option"><input type="radio" name="q1" value="2"> 1-2 years</label>
-            <label class="option"><input type="radio" name="q1" value="3"> 3-5 years</label>
-            <label class="option"><input type="radio" name="q1" value="4"> More than 5 years</label>
-            <button type="button" onclick="nextPage(3)">Next</button>
-        </div>
-        <div id="page3" class="page">
-            <h3>2. How many RDA Plenaries have you attended?</h3>
-            <label class="option"><input type="radio" name="q2" value="1"> None</label>
-            <label class="option"><input type="radio" name="q2" value="2"> 1-2</label>
-            <label class="option"><input type="radio" name="q2" value="3"> 3-5</label>
-            <label class="option"><input type="radio" name="q2" value="4"> More than 5</label>
-            <button type="button" onclick="nextPage(4)">Next</button>
-        </div>
-        <div id="page4" class="page">
-            <h3>3. Can you distinguish between a Working Group (WG), Interest Group (IG), and Community of Practice (COP) in the RDA context?</h3>
-            <label class="option"><input type="radio" name="q3" value="1"> Not sure</label>
-            <label class="option"><input type="radio" name="q3" value="2"> Somewhat</label>
-            <label class="option"><input type="radio" name="q3" value="3"> Fairly well</label>
-            <label class="option"><input type="radio" name="q3" value="4"> Very well</label>
-            <button type="button" onclick="calculateResults()">Submit</button>
-        </div>
+        <form id="quizForm" action="https://formsubmit.co/kr.shalini@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://your-website.com/thank-you">
+            <input type="hidden" name="result" id="resultField">
+
+            <div id="page2" class="page">
+                <h3>1. How long have you been part of the RDA community?</h3>
+                <label class="option"><input type="radio" name="q1" value="1"> Just joined</label>
+                <label class="option"><input type="radio" name="q1" value="2"> 1-2 years</label>
+                <label class="option"><input type="radio" name="q1" value="3"> 3-5 years</label>
+                <label class="option"><input type="radio" name="q1" value="4"> More than 5 years</label>
+                <button type="button" onclick="nextPage(3, 'q1')">Next</button>
+            </div>
+            <div id="page3" class="page">
+                <h3>2. How many RDA Plenaries have you attended?</h3>
+                <label class="option"><input type="radio" name="q2" value="1"> None</label>
+                <label class="option"><input type="radio" name="q2" value="2"> 1-2</label>
+                <label class="option"><input type="radio" name="q2" value="3"> 3-5</label>
+                <label class="option"><input type="radio" name="q2" value="4"> More than 5</label>
+                <button type="button" onclick="nextPage(4, 'q2')">Next</button>
+            </div>
+            <div id="page4" class="page">
+                <h3>3. How many RDA groups' reports have you read or events have you attended?</h3>
+                <label class="option"><input type="radio" name="q3" value="1"> None</label>
+                <label class="option"><input type="radio" name="q3" value="2"> 1-2</label>
+                <label class="option"><input type="radio" name="q3" value="3"> 3-5</label>
+                <label class="option"><input type="radio" name="q3" value="4"> More than 5</label>
+                <button type="button" onclick="nextPage(5, 'q3')">Next</button>
+            </div>
+            <div id="page5" class="page">
+                <h3>4. To how many RDA mailing lists are you subscribed?</h3>
+                <label class="option"><input type="radio" name="q4" value="1"> None</label>
+                <label class="option"><input type="radio" name="q4" value="2"> 1-2</label>
+                <label class="option"><input type="radio" name="q4" value="3"> 3-5</label>
+                <label class="option"><input type="radio" name="q4" value="4"> More than 5</label>
+                <button type="button" onclick="nextPage(6, 'q4')">Next</button>
+            </div>
+            <div id="page6" class="page">
+                <h3>5. Can you distinguish between a Working Group (WG), Interest Group (IG), and Community of Practice (COP) in the RDA context?</h3>
+                <label class="option"><input type="radio" name="q5" value="1"> Not sure</label>
+                <label class="option"><input type="radio" name="q5" value="2"> Somewhat</label>
+                <label class="option"><input type="radio" name="q5" value="3"> Fairly well</label>
+                <label class="option"><input type="radio" name="q5" value="4"> Very well</label>
+                <button type="button" onclick="nextPage(7, 'q5')">Next</button>
+            </div>
+            <div id="page7" class="page">
+                <h3>6. Do you belong to the funding or advisory body of the RDA?</h3>
+                <label class="option"><input type="radio" name="q6" value="1"> No</label>
+                <label class="option"><input type="radio" name="q6" value="3"> Yes, I am a funder</label>
+                <label class="option"><input type="radio" name="q6" value="4"> Yes, I am on an advisory board</label>
+                <label class="option"><input type="radio" name="q6" value="4"> Yes, I am a council member</label>
+                <button type="button" onclick="nextPage(8, 'q6')">Next</button>
+            </div>
+            <div id="page8" class="page">
+                <h3>7. How many WGs, IGs, COPs do you lead or co-lead?</h3>
+                <label class="option"><input type="radio" name="q7" value="1"> None</label>
+                <label class="option"><input type="radio" name="q7" value="2"> 1-2</label>
+                <label class="option"><input type="radio" name="q7" value="3"> 3-5</label>
+                <label class="option"><input type="radio" name="q7" value="4"> More than 5</label>
+                <button type="button" onclick="nextPage(9, 'q7')">Next</button>
+            </div>
+            <div id="page9" class="page">
+                <h3>8. How many WGs, IGs, COPs do you actively participate in, such as attending meetings or contributing to output production?</h3>
+                <label class="option"><input type="radio" name="q8" value="1"> None</label>
+                <label class="option"><input type="radio" name="q8" value="2"> 1-2</label>
+                <label class="option"><input type="radio" name="q8" value="3"> 3-5</label>
+                <label class="option"><input type="radio" name="q8" value="4"> More than 5</label>
+                <button type="button" onclick="nextPage(10, 'q8')">Next</button>
+            </div>
+            <div id="page10" class="page">
+                <h3>9. How often do you visit the RDA website to find specific content?</h3>
+                <label class="option"><input type="radio" name="q9" value="1"> Rarely</label>
+                <label class="option"><input type="radio" name="q9" value="2"> Occasionally</label>
+                <label class="option"><input type="radio" name="q9" value="3"> Often</label>
+                <label class="option"><input type="radio" name="q9" value="4"> Regularly</label>
+                <button type="button" onclick="nextPage(11, 'q9')">Next</button>
+            </div>
+            <div id="page11" class="page">
+                <h3>10. How would you describe your level of interaction with other community members in the RDA?</h3>
+                <label class="option"><input type="radio" name="q10" value="1"> I mainly observe and learn</label>
+                <label class="option"><input type="radio" name="q10" value="2"> I participate occasionally</label>
+                <label class="option"><input type="radio" name="q10" value="3"> I participate regularly and contribute</label>
+                <label class="option"><input type="radio" name="q10" value="4"> I am a key influencer and decision-maker</label>
+                <button type="button" onclick="calculateResults()">Submit</button>
+            </div>
+        </form>
         <div id="result" class="page">
-            <h3>Your Result:</h3>
-            <p id="resultText"></p>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+            <h3>Your Result:</h
