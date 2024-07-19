@@ -69,5 +69,14 @@ function calculateResults() {
     document.getElementById('resultText').innerText = resultText;
     document.getElementById('resultField').value = resultText;
 
-    document.getElementById('quizForm').submit();
+    // Show the result page before submitting the form
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.classList.remove('active');
+    });
+    document.getElementById('result').classList.add('active');
+
+    setTimeout(() => {
+        document.getElementById('quizForm').submit();
+    }, 3000);  // Show the result for 3 seconds before submitting
 }
