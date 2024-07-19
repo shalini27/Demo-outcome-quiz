@@ -1,62 +1,28 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+function calculateResults() {
+    const form = document.getElementById('quizForm');
+    let score = 0;
 
-.container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    margin: 20px;
-}
+    const q1 = form.elements['q1'].value;
+    const q2 = form.elements['q2'].value;
+    const q3 = form.elements['q3'].value;
 
-h1 {
-    text-align: center;
-    color: #333;
-}
+    score += parseInt(q1) || 0;
+    score += parseInt(q2) || 0;
+    score += parseInt(q3) || 0;
 
-.question h3 {
-    color: #555;
-}
+    let resultText = '';
 
-label {
-    display: block;
-    margin: 5px 0;
-}
+    if (score <= 6) {
+        resultText = 'You are a Lost Puppy! As a newbie, you might feel a little overwhelmed, but with some guidance, you\'ll be navigating like a pro in no time.';
+    } else if (score <= 9) {
+        resultText = 'You are a Secret Admirer! You prefer to observe and learn quietly. Enjoy the wealth of community resources at your own pace.';
+    } else if (score <= 12) {
+        resultText = 'You are a Window Shopper! You love exploring different topics and ideas. Keep soaking up new perspectives and networking.';
+    } else {
+        resultText = 'You are a seasoned member of the RDA community!';
+    }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 20px;
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerText = resultText;
+    resultDiv.style.display = 'block';
 }
-
-button:hover {
-    background-color: #0056b3;
-}
-
-#result {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #007BFF;
-    color: white;
-    border-radius: 8px;
-    text-align: center;
-    display: none;
-}
-
