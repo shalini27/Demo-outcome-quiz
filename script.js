@@ -65,3 +65,4 @@ function calculateResults() {
 
     document.getElementById('quizForm').submit();
 }
+
