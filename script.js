@@ -1,4 +1,10 @@
 function nextPage(pageNumber, questionName) {
+    if (pageNumber === 2) {
+        document.getElementById(`page1`).classList.remove('active');
+        document.getElementById(`page${pageNumber}`).classList.add('active');
+        return;
+    }
+
     const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
     if (selectedOption) {
         const pages = document.querySelectorAll('.page');
@@ -65,4 +71,3 @@ function calculateResults() {
 
     document.getElementById('quizForm').submit();
 }
-
